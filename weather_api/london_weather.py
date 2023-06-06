@@ -1,6 +1,6 @@
 import requests
 from databases.mongodb_connector import get_database
-from project_credentials.api_crendentials import *
+from project_credentials.api_credentials import *
 
 
 def fetch_current_weather_data():
