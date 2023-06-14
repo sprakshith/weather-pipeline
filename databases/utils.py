@@ -5,6 +5,19 @@ from pymongo import ASCENDING, DESCENDING
 from databases.mongodb_connector import get_database
 
 
+def get_day_labels():
+    days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+    today = datetime.date.today()
+    day = today.strftime("%A")
+    day_index = days.index(day)
+    day_labels = days[day_index + 1:] + days[:day_index + 1]
+    day_labels = day_labels[-7:]
+    day_labels[-1] = "Today"
+    day_labels[-2] = "Yesterday"
+
+    return day_labels
+
+
 def get_latest_weather_data():
     database = get_database()
     collection = database['london_weather']
@@ -12,6 +25,36 @@ def get_latest_weather_data():
     latest_data.pop('_id')
 
     return latest_data
+
+
+def get_all_weather_data():
+    df = save_data_dataframe()
+
+    df['datetime'] = pd.to_datetime(df['datetime'], unit='s')
+    df['day_number'] = df['datetime'].dt.dayofyear
+
+    mean_df = df.groupby('day_number').mean().reset_index()
+    mean_df.columns = ['day_number', 'datetime', 'mean_temperature', 'mean_humidity', 'mean_wind_speed', 'mean_clouds']
+    mean_df = mean_df.sort_values('day_number')
+    mean_df = mean_df.tail(7)
+    mean_df.reset_index(drop=True, inplace=True)
+    mean_df.drop(columns=['day_number', 'datetime'], inplace=True)
+    mean_df['day_label'] = get_day_labels()
+
+    mean_df['mean_temperature'] = mean_df['mean_temperature'].apply(lambda x: round(x-273.15, 2))
+    mean_df['mean_humidity'] = mean_df['mean_humidity'].apply(lambda x: round(x, 2))
+    mean_df['mean_wind_speed'] = mean_df['mean_wind_speed'].apply(lambda x: round(x, 2))
+    mean_df['mean_clouds'] = mean_df['mean_clouds'].apply(lambda x: round(x, 2))
+
+    response = {
+        'day': list(mean_df.day_label),
+        'temperature': list(mean_df.mean_temperature),
+        'humidity': list(mean_df.mean_humidity),
+        'wind_speed': list(mean_df.mean_wind_speed),
+        'clouds': list(mean_df.mean_clouds)
+    }
+
+    return response
 
 
 def save_data_dataframe():
@@ -74,4 +117,4 @@ def save_data_dataframe():
 
 
 if __name__ == '__main__':
-    print(get_latest_weather_data())
+    print(get_all_weather_data())
