@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Weather Visualization</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="style.css">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="https://d3js.org/d3.v5.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/skycons/1396634940/skycons.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/snap.svg/0.4.1/snap.svg-min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.min.js"></script>
+        <script src="script.js"></script>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="website-heading" style="text-align: center;">
+                        <h2>Current Weather</h2>
+                    </div>
+                    <div class="card ml-5">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="row align-items-center justify-content-between">
+                                        <div class="col-auto">
+                                            <h2 id="weather-title"></h2>
+                                        </div>
+                                        <div class="col-auto">
+                                            <img id="country-flag" src="" alt="Country Flag" width="50" height="50">
+                                        </div>
+                                        <div class="col-auto">
+                                            <img id="weather-icon" src="" alt="Weather Icon" width="100" height="100">
+                                        </div>
+                                        <div class="col-auto">
+                                            <h5 class="card-title mt-3" id="weather-condition"></h5>
+                                        </div>
+                                    </div>
+                                    <canvas id="weather-chart"></canvas>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <h5 class="card-title visibility-value mt-3"></h5>
+                                        </div>
+                                        <div class="col-6">
+                                            <h5 class="card-title wind-speed mt-3"></h5>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="sunrise-sunset">
+                                                <svg id="sunr-suns" viewbox="0 0 100 100">
+                                                    <circle cx="50" cy="50" r="45" fill="#FDB900"/>
+                                                    <path id="progress" fill="none" stroke-linecap="round" stroke-width="5" stroke="#fff"
+                                                        stroke-dasharray="1,250.2"
+                                                        d="M50 10
+                                                        a 40 40 0 0 1 0 80
+                                                        a 40 40 0 0 1 0 -80"/>
+                                                    <text id="count" x="50" y="50" text-anchor="middle" dy="7" font-size="20">1%</text>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="sssr-card">
+                                                <h5 class="card-title sunrise mt-3"></h5>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="sssr-card">
+                                                <h5 class="card-title sunset mt-3"></h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="website-heading" style="text-align: center;">
+                        <h2>Weather Trends: Past Week</h2>
+                    </div>
+                    <div class="chart-container mt-5 mr-5">
+                        <div class='row'>
+                            <div class='col-6'>
+                                <canvas id="tempChart"></canvas>
+                            </div>
+                            <div class='col-6'>
+                                <canvas id="humidityChart"></canvas>
+                            </div>
+                        </div>
+                        <div class='row mt-4'>
+                            <div class='col-6'>
+                                <canvas id="windChart"></canvas>
+                            </div>
+                            <div class='col-6'>
+                                <canvas id="cloudsChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="website-heading mt-5" style="text-align: center;">
+                        <h2>Weather Forecast: Upcoming week</h2>
+                    </div>
+                    <div id="bbc-report-carousel" class="carousel slide mt-5" data-ride="carousel">
+                      <div class="carousel-inner">
+                        <div class="carousel-item active">
+                          <h3></h3>
+                          <p></p>
+                          <div style="text-align: center; margin-top: 30px;">
+                            <h5>1/3</h5>
+                          </div>
+                        </div>
+                        <div class="carousel-item">
+                          <h3></h3>
+                          <p></p>
+                          <div style="text-align: center; margin-top: 30px;">
+                            <h5>2/3</h5>
+                          </div>
+                        </div>
+                        <div class="carousel-item">
+                          <h3></h3>
+                          <p></p>
+                          <div style="text-align: center; margin-top: 30px;">
+                            <h5>3/3</h5>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

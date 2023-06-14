@@ -1,0 +1,16 @@
+#sunr-suns {
+    width:30%;
+}
+
+.sunrise-sunset, .visibility-value, .wind-speed, .sssr-card {
+    text-align: center;
+}
+
+body {
+     background: linear-gradient(to left, #ffffff, #add8e6);
+}
+
+div.card {
+    background: transparent;
+    border: none;
+}
