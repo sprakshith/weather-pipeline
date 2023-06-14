@@ -1,2 +1,9 @@
-pymongo~=4.3.3
 requests~=2.31.0
+beautifulsoup4~=4.12.2
+pymongo~=4.3.3
+pandas~=2.0.2
+Flask~=2.3.2
+Flask-Cors~=3.0.10
+eventlet~=0.33.3
+Flask-SocketIO~=5.3.4
+confluent-kafka~=2.1.1

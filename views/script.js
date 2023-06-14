@@ -1,6 +1,8 @@
 $(document).ready(function () {
-//	var BASE_URL = 'http://127.0.0.1:5050'
-	var BASE_URL = 'http://35.196.115.216:5050'
+	var IP_ADDRESS = 'http://127.0.0.1'
+//	var IP_ADDRESS = 'http://35.196.115.216'
+
+	var BASE_URL = IP_ADDRESS + ':5050'
 
     $.ajax({
         url: BASE_URL + "/get_all_data",
@@ -11,7 +13,7 @@ $(document).ready(function () {
         }
     });
 
-    const socket = io.connect('http://35.196.115.216:12345');
+    const socket = io.connect(IP_ADDRESS + ':12345');
 
 	socket.on('LATEST_WEATHER_REPORT', function(response) {
 	    var latestWeatherData = JSON.parse(response);
