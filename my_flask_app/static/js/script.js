@@ -1,7 +1,5 @@
 $(document).ready(function () {
-	var IP_ADDRESS = 'http://127.0.0.1'
-//	var IP_ADDRESS = 'http://35.196.115.216'
-
+	var IP_ADDRESS = 'http://localhost'
 	var BASE_URL = IP_ADDRESS + ':5050'
 
     $.ajax({

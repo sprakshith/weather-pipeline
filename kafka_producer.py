@@ -1,7 +1,7 @@
 import time
 import json
 from confluent_kafka import Producer
-from databases.utils import get_latest_weather_data
+from database.utils import get_latest_weather_data
 from data_scraping.bbc_website import get_bbc_weather_report
 
 

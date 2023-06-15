@@ -1,5 +1,5 @@
 import requests
-from databases.mongodb_connector import get_database
+from database.mongodb_connector import get_database
 from project_credentials.api_credentials import *
 
 

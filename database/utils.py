@@ -2,7 +2,7 @@ import os
 import datetime
 import pandas as pd
 from pymongo import ASCENDING, DESCENDING
-from databases.mongodb_connector import get_database
+from database.mongodb_connector import get_database
 
 
 def get_day_labels():

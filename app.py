@@ -1,6 +1,6 @@
 from flask_cors import CORS
 from flask import Flask, Response
-from databases.utils import get_all_weather_data
+from database.utils import get_all_weather_data
 
 
 app = Flask(__name__)
