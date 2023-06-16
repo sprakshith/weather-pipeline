@@ -78,3 +78,9 @@ On Mac/Win: ``pip install -r requirements.txt``
 6. Run Zookeeper and Kafka servers.
 7. Run the following python files in order: ``app.py``, ``kafka_producer.py``, ``kafka_consumer.py``, ``socket_app.py`` and ``flask_static.py``.
 8. Visit ``http://localhost:8080``
+
+<hr>
+
+Website Screenshot
+
+<img src="https://github.com/sprakshith/weather-pipeline/blob/master/WeatherPipeline.png" alt="Opps!"/>
