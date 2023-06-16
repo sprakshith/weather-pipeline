@@ -81,6 +81,6 @@ On Mac/Win: ``pip install -r requirements.txt``
 
 <hr>
 
-Website Screenshot
+<h3><u>3. Website Screenshot:</u></h3>
 
 <img src="https://github.com/sprakshith/weather-pipeline/blob/master/WeatherPipeline.png" alt="Opps!"/>
